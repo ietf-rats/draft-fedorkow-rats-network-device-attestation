@@ -928,21 +928,21 @@ Internet-Draft     Network Device Attestation Workflow         June 2019
    Verifier and an Attester, specified in
    [I-D.birkholz-rats-reference-interaction-model]:
 
-Attester                                                     Verifier
-   |                                                               |
-   | <------- requestAttestation(nonce, authSecID, claimSelection) |
-   |                                                               |
-collectAssertions(assertionsSelection)                             |
-   | => assertions                                                 |
-   |                                                               |
-signAttestationEvidence(authSecID, assertions, nonce)              |
-   | => signedAttestationEvidence                                  |
-   |                                                               |
-   | signedAttestationEvidence ----------------------------------> |
-   |                                                               |
-   | verifyAttestationEvidence(signedAttestationEvidence, refassertions)
-   |                                          attestationResult <= |
-   |                                                               |
+   Attester                                                     Verifier
+      |                                                               |
+      | <------- requestAttestation(nonce, authSecID, claimSelection) |
+      |                                                               |
+   collectAssertions(assertionsSelection)                             |
+      | => assertions                                                 |
+      |                                                               |
+   signAttestationEvidence(authSecID, assertions, nonce)              |
+      | => signedAttestationEvidence                                  |
+      |                                                               |
+      | signedAttestationEvidence ----------------------------------> |
+      |                                                               |
+      | verifyAttestationEvidence(signedAttestatEvidence, refassertions)
+      |                                          attestationResult <= |
+      |                                                               |
 
                 Figure 3: IETF Attestation Information Flow
 
@@ -984,9 +984,9 @@ Internet-Draft     Network Device Attestation Workflow         June 2019
       connection is attesting the right box.
 
    o  In Step 2, measured values are retrieved from the Attester's TPM
-      using a YANG or SNMP interface that implements the TCG TAP model
-      (e.g.  YANG Module for Basic Challenge-Response-based Remote
-      Attestation Procedures
+      using a YANG [RFC8348] or SNMP [RFC3413] interface that implements
+      the TCG TAP model (e.g.  YANG Module for Basic Challenge-Response-
+      based Remote Attestation Procedures
       [I-D.birkholz-yang-basic-remote-attestation]).
 
    o  In Step 3, the Attester also delivers a copy of the signed
@@ -1705,13 +1705,6 @@ Internet-Draft     Network Device Attestation Workflow         June 2019
               <https://trustedcomputinggroup.org/wp-content/uploads/
               EFI-Protocol-Specification-rev13-160330final.pdf>.
 
-   [Firmware-Profile]
-              Trusted Computing Group, "Trusted Computing Group, PC
-              Client Specific Platform Firmware Profile Specification
-              Family "2.0", Level 00 Revision 1.03 Version 51", June
-              2019, <https://trustedcomputinggroup.org/pc-client-
-              specific-platform-firmware-profile-specification/>.
-
    [GloPlaRoT]
               GlobalPlatform Technology, "Root of Trust Definitions and
               Requirements Version 1.1", June 2018,
@@ -1730,6 +1723,13 @@ Internet-Draft     Network Device Attestation Workflow         June 2019
               birkholz-rats-reference-interaction-model-01 (work in
               progress), July 2019.
 
+   [I-D.birkholz-rats-tuda]
+              Fuchs, A., Birkholz, H., McDonald, I., and C. Bormann,
+              "Time-Based Uni-Directional Attestation", draft-birkholz-
+              rats-tuda-01 (work in progress), September 2019.
+
+
+
 
 
 
@@ -1737,11 +1737,6 @@ Fedorkow & Fitzgerald-McExpires December 3, 2019               [Page 31]
 
 Internet-Draft     Network Device Attestation Workflow         June 2019
 
-
-   [I-D.birkholz-rats-tuda]
-              Fuchs, A., Birkholz, H., McDonald, I., and C. Bormann,
-              "Time-Based Uni-Directional Attestation", draft-birkholz-
-              rats-tuda-01 (work in progress), September 2019.
 
    [I-D.birkholz-suit-coswid-manifest]
               Birkholz, H., "A SUIT Manifest Extension for Concise
@@ -1785,6 +1780,11 @@ Internet-Draft     Network Device Attestation Workflow         June 2019
               <https://nvlpubs.nist.gov/nistpubs/ir/2016/
               NIST.IR.8060.pdf>.
 
+   [NIST-SP-800-155]
+              National Institute for Standards and Technology, "BIOS
+              Integrity Measurement Guidelines (Draft)", December 2011,
+              <https://csrc.nist.gov/csrc/media/publications/sp/800-
+              155/draft/documents/draft-sp800-155_dec2011.pdf>.
 
 
 
@@ -1793,12 +1793,6 @@ Fedorkow & Fitzgerald-McExpires December 3, 2019               [Page 32]
 
 Internet-Draft     Network Device Attestation Workflow         June 2019
 
-
-   [NIST-SP-800-155]
-              National Institute for Standards and Technology, "BIOS
-              Integrity Measurement Guidelines (Draft)", December 2011,
-              <https://csrc.nist.gov/csrc/media/publications/sp/800-
-              155/draft/documents/draft-sp800-155_dec2011.pdf>.
 
    [PC-Client-BIOS-TPM-1.2]
               Trusted Computing Group, "TCG PC Client Specific
@@ -1837,6 +1831,11 @@ Internet-Draft     Network Device Attestation Workflow         June 2019
               wp-content/uploads/
               TCG-TPM-v2.0-Provisioning-Guidance-Published-v1r1.pdf>.
 
+   [RFC3413]  Levi, D., Meyer, P., and B. Stewart, "Simple Network
+              Management Protocol (SNMP) Applications", STD 62,
+              RFC 3413, DOI 10.17487/RFC3413, December 2002,
+              <https://www.rfc-editor.org/info/rfc3413>.
+
    [RFC6813]  Salowey, J. and S. Hanna, "The Network Endpoint Assessment
               (NEA) Asokan Attack Analysis", RFC 6813,
               DOI 10.17487/RFC6813, December 2012,
@@ -1845,14 +1844,11 @@ Internet-Draft     Network Device Attestation Workflow         June 2019
 
 
 
+
 Fedorkow & Fitzgerald-McExpires December 3, 2019               [Page 33]
 
 Internet-Draft     Network Device Attestation Workflow         June 2019
 
-
-   [RFC7049]  Bormann, C. and P. Hoffman, "Concise Binary Object
-              Representation (CBOR)", RFC 7049, DOI 10.17487/RFC7049,
-              October 2013, <https://www.rfc-editor.org/info/rfc7049>.
 
    [RFC8348]  Bierman, A., Bjorklund, M., Dong, J., and D. Romascanu, "A
               YANG Data Model for Hardware Management", RFC 8348,
@@ -1894,7 +1890,11 @@ Internet-Draft     Network Device Attestation Workflow         June 2019
 
 Authors' Addresses
 
+   Guy Fedorkow (editor)
+   Juniper Networks, Inc.
+   US
 
+   Email: gfedorkow@juniper.net
 
 
 
@@ -1906,18 +1906,18 @@ Fedorkow & Fitzgerald-McExpires December 3, 2019               [Page 34]
 Internet-Draft     Network Device Attestation Workflow         June 2019
 
 
-   Guy Fedorkow (editor)
-   Juniper Networks, Inc.
-   US
-
-   Email: gfedorkow@juniper.net
-
-
    Jessica Fitzgerald-McKay
    National Security Agency
    US
 
    Email: jmfitz2@nsa.gov
+
+
+
+
+
+
+
 
 
 

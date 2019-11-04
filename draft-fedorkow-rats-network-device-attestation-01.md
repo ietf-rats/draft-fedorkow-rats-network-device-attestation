@@ -41,7 +41,7 @@ author:
 ref: {}
 informative:
   RFC8348: 
-  RFC7049: 
+  RFC3413:
   RFC8572: 
   RFC6813:
   RFC8446:
@@ -120,13 +120,6 @@ informative:
     author:
     - org: Trusted Computing Group
     date: 2015-03
-  Firmware-Profile:
-    target: https://trustedcomputinggroup.org/pc-client-specific-platform-firmware-profile-specification/
-    title: Trusted Computing Group, PC Client Specific Platform Firmware Profile Specification
-      Family "2.0", Level 00 Revision 1.03 Version 51
-    author:
-    - org: Trusted Computing Group
-    date: 2019-06
   IEEE-802-1AR:
     title: 802.1AR-2018 - IEEE Standard for Local and Metropolitan Area Networks -
       Secure Device Identity, IEEE Computer Society
@@ -156,8 +149,7 @@ informative:
     - org: Trusted Computing Group
     date: 2018-10
   GloPlaRoT:
-    target:
-    https://globalplatform.org/specs-library/globalplatform-root-of-trust-definitions-and-requirements/ 
+    target: https://globalplatform.org/specs-library/globalplatform-root-of-trust-definitions-and-requirements/ 
     title: Root of Trust Definitions and Requirements Version 1.1
     author:
     - org: GlobalPlatform Technology
@@ -848,7 +840,7 @@ signAttestationEvidence(authSecID, assertions, nonce)              |
    |                                                               |
    | signedAttestationEvidence ----------------------------------> |
    |                                                               |
-   | verifyAttestationEvidence(signedAttestationEvidence, refassertions)
+   | verifyAttestationEvidence(signedAttestatEvidence, refassertions)
    |                                          attestationResult <= |
    |                                                               |
 ~~~~
@@ -882,7 +874,7 @@ diagram:
   the right box.
 
 * In Step 2, measured values are retrieved from the Attester's TPM using a
-  YANG or SNMP interface that implements the TCG TAP model (e.g. YANG Module
+  YANG {{RFC8348}} or SNMP {{RFC3413}} interface that implements the TCG TAP model (e.g. YANG Module
   for Basic Challenge-Response-based Remote Attestation Procedures {{I-D.birkholz-yang-basic-remote-attestation}}).
 
 * In Step 3, the Attester also delivers a copy of the signed reference measurements,
@@ -1154,7 +1146,7 @@ device may become indistinguishable from an authentic device.
 RIV also depends on reliable reference measurements, as expressed by the RIM {{RIM}}.  The definition of 
 trust procedures for RIMs is out of scope for RIV, and the device owner is free to use any policy to validate 
 a set of reference measurements.  RIMs may be conveyed out-of-band or in-band, as part of the attestation 
-process (see Section XX)[xref].  But for embedded devices, where software is usually shipped as a self-contained 
+process (see Section 3.2).  But for embedded devices, where software is usually shipped as a self-contained 
 package, RIMs signed by the manufacturer and delivered in-band may be more convenient for the device owner.
 
 # Conclusion
